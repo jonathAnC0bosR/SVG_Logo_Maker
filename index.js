@@ -3,6 +3,8 @@ const fs = require('fs');
 const {Circle, Triangle, Square} = require('./lib/shapes');
 const path = require('path');
 const folderPath = './examples';
+const fileName = 'logo.svg'
+const filePath = path.join(folderPath, fileName);
 
 
 inquirer
@@ -38,32 +40,26 @@ const render = function(data) {
     if(data.shape === 'circle') {
         
         const newCircle = new Circle(data.text, data.textColor, data.shapesColor, data.shape);
-        const fileName = 'newCircleEx.svg';
-        let filePath = path.join(folderPath, fileName);
         const svgCircle = renderCircle(newCircle);
         fs.writeFile(filePath, svgCircle, (err) => {
-            err ? console.log(err) : console.log('File created succesfully! ');
+            err ? console.log(err) : console.log('Generated logo.svg');
         })
-
+    
         
     } else if (data.shape === 'triangle') {
         
         const newTriangle = new Triangle(data.text, data.textColor, data.shapesColor, data.shape);
-        const fileName = 'newTriangle.svg';
-        let filePath = path.join(folderPath, fileName);
         const svgTriangle = renderTriangle(newTriangle);
         fs.writeFile(filePath, svgTriangle, (err) => {
-            err ? console.log(err) : console.log('File created succesfully! ');
+            err ? console.log(err) : console.log('Generated logo.svg');
         })
         
     } else  {
         
         const newSquare = new Square(data.text, data.textColor, data.shapesColor, data.shape);
-        const fileName = 'newSquare.svg';
-        let filePath = path.join(folderPath, fileName);
         const svgSquare = renderSquare(newSquare);
         fs.writeFile(filePath, svgSquare, (err) => {
-            err ? console.log(err) : console.log('File created succesfully! '); 
+            err ? console.log(err) : console.log('Generated logo.svg'); 
         })
 
     }
@@ -76,7 +72,7 @@ xmlns="http://www.w3.org/2000/svg">
 
 <${shape} cx="150" cy="100" r="80" fill="${shapesColor}" />
 
-<text x="150" y="125" font-size="60" text-anchor="middle" fill="${textColor}">${text}</text>
+<text x="152" y="120" font-size="60" text-anchor="middle" fill="${textColor}">${text}</text>
 
 </svg>`
 ;
