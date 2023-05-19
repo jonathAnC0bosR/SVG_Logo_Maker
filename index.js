@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-Circle = require('./lib/shapes');
+const {Circle} = require('./lib/shapes');
 
 inquirer
     .prompt([
@@ -27,16 +27,16 @@ inquirer
         },
     ])
     .then((data) => {
-        const userInput = {
-            text: data.text,
-            textColor: data.textColor,
-            shapesColor: data.shapesColor,
-            shape: data.shape,
-        }
+        // const userInput = {
+        //     text: data.text,
+        //     textColor: data.textColor,
+        //     shapesColor: data.shapesColor,
+        //     shape: data.shape,
+        // }
 
 
-        console.log(userInput);
-        const newShape = new Circle(userInput);
+        // console.log(userInput);
+        const newShape = new Circle(data.text, data.textColor, data.shapesColor, data.shape);
         console.log(newShape);
     })
 
