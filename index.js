@@ -1,12 +1,13 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+Circle = require('./lib/shapes');
 
 inquirer
     .prompt([
         {
             type: 'input',
             message: 'Enter 3 letters:',
-            name: 'letters',
+            name: 'text',
         },
         {
             type: 'input',
@@ -25,3 +26,17 @@ inquirer
             name: 'shapesColor',
         },
     ])
+    .then((data) => {
+        const userInput = {
+            text: data.text,
+            textColor: data.textColor,
+            shapesColor: data.shapesColor,
+            shape: data.shape,
+        }
+
+
+        console.log(userInput);
+        const newShape = new Circle(userInput);
+        console.log(newShape);
+    })
+
